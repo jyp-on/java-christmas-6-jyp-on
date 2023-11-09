@@ -28,10 +28,18 @@ class ValidateUtilTest {
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
+    @DisplayName("주문 파싱 테스트")
     @Test
     void parseOrder() {
         List<Map<Menu, Integer>> maps = ValidateUtil.parseOrder("타파스-1,제로콜라-3");
         assertThat(maps.get(0).get(Appetizer.타파스)).isEqualTo(1);
         assertThat(maps.get(1).get(Beverage.제로콜라)).isEqualTo(3);
+    }
+
+    @DisplayName("중복 주문 예외 처리")
+    @Test
+    void checkDuplicateOrder() {
+        assertThatThrownBy(() -> ValidateUtil.parseOrder("타파스-1,타파스-2"))
+                .isInstanceOf(IllegalArgumentException.class);
     }
 }

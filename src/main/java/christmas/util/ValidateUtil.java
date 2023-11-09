@@ -11,6 +11,9 @@ import java.util.List;
 import java.util.Map;
 
 public class ValidateUtil {
+
+    private static final List<String> menuNames = new ArrayList<>();
+
     public static int convertToInt(String input) {
         try {
             return Integer.parseInt(input);
@@ -34,17 +37,31 @@ public class ValidateUtil {
     public static List<Map<Menu, Integer>> parseOrder(String input) {
         try {
             String[] parseOrder = input.split(",");
-            List<Map<Menu, Integer>> orderList = new ArrayList<>();
-            for (int i = 0; i < parseOrder.length; i++) {
-                String[] menuAndCount = parseOrder[i].split("-");
-                int count = validateCount(menuAndCount[1]);
-                orderList.add(Map.of(getMenuByName(menuAndCount[0]), count));
-            }
-            return orderList;
+            return createOrder(parseOrder);
         } catch (IllegalArgumentException e) {
             ErrorMessage.getInvalidOrder();
             throw new IllegalArgumentException();
         }
+    }
+
+    public static List<Map<Menu, Integer>> createOrder(String[] parseOrder) {
+        List<Map<Menu, Integer>> orderList = new ArrayList<>();
+        for (int i = 0; i < parseOrder.length; i++) {
+            String[] menuAndCount = parseOrder[i].split("-");
+            String menuName = menuAndCount[0];
+            int count = validateCount(menuAndCount[1]);
+            checkDuplicate(menuName);
+            orderList.add(Map.of(getMenuByName(menuName), count));
+        }
+        return orderList;
+    }
+
+    public static void checkDuplicate(String name) {
+        if (menuNames.contains(name)) {
+            ErrorMessage.getInvalidOrder();
+            throw new IllegalArgumentException();
+        }
+        menuNames.add(name);
     }
 
     public static int validateCount(String input) {

@@ -8,36 +8,36 @@ import java.util.List;
 public class Discount {
     private final int YEAR = 2023;
 
-    private int day;
+    private int date;
     private List<Menu> menuList;
 
-    public Discount(int _day, List<Menu> _menuList) {
-        this.day = _day;
+    public Discount(int _date, List<Menu> _menuList) {
+        this.date = _date;
         this.menuList = _menuList;
     }
 
-    public int dDay() {
-        return 1000 + ((this.day - 1) * 100);
+    public int ddate() {
+        return 1000 + ((this.date - 1) * 100);
     }
 
     public int special() {
         for (int i = 3; i <= 31; i += 7) {
-            if (day == 25 || day == i) {
+            if (date == 25 || date == i) {
                 return 1000;
             }
         }
         return 0;
     }
 
-    public int weekDay() {
-        if (day % 7 <= 2 && day % 7 != 0 && findEnumInMenus(Dessert.class, menuList)) {
+    public int weekdate() {
+        if (date % 7 <= 2 && date % 7 != 0 && findEnumInMenus(Dessert.class, menuList)) {
             return menuList.size() * YEAR;
         }
         return 0;
     }
 
     public int weekEnd() {
-        if ((day % 7 > 2 || day % 7 == 0) && findEnumInMenus(Main.class, menuList)) {
+        if ((date % 7 > 2 || date % 7 == 0) && findEnumInMenus(Main.class, menuList)) {
             return menuList.size() * YEAR;
         }
         return 0;

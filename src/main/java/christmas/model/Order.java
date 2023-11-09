@@ -10,4 +10,18 @@ public class Order {
     public Order(List<Map<Menu, Integer>> _orderList) {
         orderList = _orderList;
     }
+
+    public int getTotalPrice() {
+        int totalPrice = 0;
+        for (Map<Menu, Integer> orderMap : orderList) {
+            for (Map.Entry<Menu, Integer> entry : orderMap.entrySet()) {
+                totalPrice += (entry.getKey().getPrice() * entry.getValue());
+            }
+        }
+        return totalPrice;
+    }
+
+    public List<Map<Menu, Integer>> getOrder() {
+        return orderList;
+    }
 }

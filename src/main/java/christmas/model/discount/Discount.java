@@ -16,7 +16,7 @@ public class Discount {
         this.menuList = _menuList;
     }
 
-    public int ddate() {
+    public int dDay() {
         return 1000 + ((this.date - 1) * 100);
     }
 
@@ -29,7 +29,7 @@ public class Discount {
         return 0;
     }
 
-    public int weekdate() {
+    public int weekDay() {
         if (date % 7 <= 2 && date % 7 != 0 && findEnumInMenus(Dessert.class, menuList)) {
             return menuList.size() * YEAR;
         }

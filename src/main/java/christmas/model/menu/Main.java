@@ -1,9 +1,9 @@
 package christmas.model.menu;
 
 public enum Main implements Menu {
-    티본스테이크(6000),
-    바비큐립(5500),
-    해산물파스타(8000),
+    티본스테이크(55000),
+    바비큐립(54000),
+    해산물파스타(35000),
     크리스마스파스타(25000);
 
     private int price;

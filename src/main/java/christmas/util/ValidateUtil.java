@@ -137,8 +137,8 @@ public class ValidateUtil {
         } else if (name.equals("제로콜라") || name.equals("레드와인") || name.equals("샴페인")) {
             return Beverage.valueOf(name);
         }
+        ErrorMessage.getInvalidOrder();
         throw new IllegalArgumentException();
     }
-
 
 }

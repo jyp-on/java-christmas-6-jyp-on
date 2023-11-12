@@ -5,6 +5,7 @@
 - Enum들을 어떻게하면 하나로 묶을 수 있을지 고민 -> Menu interface를 Enum에서 implements 하여 Menu로 묶음
     - Map<Menu, Integer> 로 메뉴와 갯수를 짝 지을 수 있게 됨.
     - List<Map<Menu,Integer>> 로 모든 메뉴를 저장할 수 있음 -> 추후 Order 의 멤버 변수로 활용
+    - 하지만 위 방법은 코딩하기 좀 더 복잡하다. Menu라는 Enum안에 여러개의 메뉴들을 모아놓는 방법도 좋은 것 같다.
 - Order라는 클래스를 일급 객체로 만듬
     - 함수의 인자로 주고받을 수 있으니 아주 좋았다.
     - 매개변수 및 반환 값으로 사용 가능하였다.

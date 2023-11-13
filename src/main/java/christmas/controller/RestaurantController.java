@@ -8,9 +8,7 @@ public class RestaurantController {
 
     public void start() {
         InputView.start();
-        int date = readDate();
-        Order order = readOrder();
-        printResult(date, order);
+        printResult(readDate(), readOrder());
     }
 
     private int readDate() {
